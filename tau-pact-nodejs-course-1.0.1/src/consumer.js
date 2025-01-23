@@ -3,6 +3,7 @@ const express = require("express")
 const server = express()
 const getApiEndpoint = "http://localhost:8081"
 
+// get all clients
 const getClients = async () => {
   const res = await axios
     .get(`${getApiEndpoint}/clients`)
@@ -15,6 +16,7 @@ const getClients = async () => {
   return res
 }
 
+// find client by ID
 const getClient = async (id) => {
       const res = await axios
         .get(`${getApiEndpoint}/clients/${id}`)
@@ -27,6 +29,7 @@ const getClient = async (id) => {
     return res
 }
 
+// add a new Client
 const postClient = async (body) => {
       const res = await axios
       .post(`${getApiEndpoint}/clients`, body, {'Content-Type': 'application/json;charset=utf-8'})

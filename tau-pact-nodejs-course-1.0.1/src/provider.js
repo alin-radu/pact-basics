@@ -28,12 +28,12 @@ const importData = () => {
   }, 0)
 }
 
-// Get all clients
+// get all clients
 server.get("/clients", (req, res) => {
   res.json(clientRepository.fetchAll())
 })
 
-// Find client by ID
+// find client by ID
 server.get("/clients/:id", (req, res) => {
   const response = clientRepository.getById(req.params.id)
   if (response) {
@@ -45,11 +45,10 @@ server.get("/clients/:id", (req, res) => {
   }
 })
 
-// Add a new Client
+// add a new Client
 server.post("/clients", (req, res) => {
   const client = req.body
 
-  // Basic validation for missing first name field
   if (!client || !client.firstName) {
     res.status(400)
     res.send({message:'Missing first name!', body: req.body})
