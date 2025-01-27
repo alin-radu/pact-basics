@@ -1,30 +1,35 @@
-
 services:
   postgres:
     image: postgres:17
-    container_name: postgres
+    container_name: pact-broker-postgres-db
     environment:
-      POSTGRES_USER: pact_broker
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: pact_broker_user
+      POSTGRES_PASSWORD: pact_broker_password
       POSTGRES_DB: pact_broker
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pact_broker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   pact-broker:
     image: pactfoundation/pact-broker
-    container_name: pact-broker
+    container_name: pact-broker-server
     environment:
       PACT_BROKER_DATABASE_ADAPTER: postgres
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: pact_broker
-      PACT_BROKER_DATABASE_USERNAME: pact_broker
-      PACT_BROKER_DATABASE_PASSWORD: password
+      PACT_BROKER_DATABASE_USERNAME: pact_broker_user
+      PACT_BROKER_DATABASE_PASSWORD: pact_broker_password
     ports:
       - "9292:9292"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
