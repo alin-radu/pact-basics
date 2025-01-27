@@ -20,7 +20,7 @@ const clientRepository = new Repository()
 
 // Load client data into a repository object
 const importData = () => {
-  const data = require("./data/clientData.json")
+  const data = require("../data/clientData.json")
   data.reduce((a, v) => {
     v.id = a + 1
     clientRepository.add(v)
