@@ -2,13 +2,17 @@ const path = require('path');
 const { Verifier } = require('@pact-foundation/pact');
 const { server, importData } = require('../../../src/provider/provider');
 
-const SERVER_URL = 'http://localhost:8081';
+const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
+require('dotenv').config({ path: envFile });
+
+const SERVER_PORT = process.env.PROVIDER_SERVER_PORT;
+const SERVER_URL = process.env.PROVIDER_SERVER_URL;
 
 // the provider server should be up
 // v1
 // npm run provider
 // v2
-server.listen(8081, () => {
+server.listen(SERVER_PORT, () => {
   importData();
   console.log(`Clients Service listening on ${SERVER_URL}...`);
 });
@@ -20,7 +24,7 @@ describe('Clients Service Verification', () => {
       provider: 'Clients Service',
       logLevel: 'ERROR',
       providerBaseUrl: SERVER_URL,
-      pactUrls: ['http://localhost:9292/pacts/provider/ClientsService/consumer/Frontend/latest'],
+      pactUrls: [process.env.PACK_BROKER_PACTS_URLS],
       consumerVersionTags: ['dev'],
       providerVersionTags: ['dev'],
       publishVerificationResult: true,
