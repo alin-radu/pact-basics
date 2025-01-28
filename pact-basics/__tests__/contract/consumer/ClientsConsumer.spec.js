@@ -8,19 +8,25 @@ describe('Clients Service', () => {
     {
       firstName: 'Lisa',
       lastName: 'Simpson',
-      age: 8,
+      dateOfBirth: Matchers.term(
+        generate: "01/01/2005",
+        matcher: /\d{2}\/\d{2}\/\d{4}/,
+      ),
+      age: 20,
       id: 1,
     },
     {
       firstName: 'Wonder',
       lastName: 'Woman',
-      age: 30,
+      dateOfBirth: "01/01/1990",
+      age: Matchers.like(35),
       id: 2,
     },
     {
       firstName: 'Homer',
       lastName: 'Simpson',
-      age: 39,
+      dateOfBirth:"01/01/1980",
+      age: 45,
       id: 3,
     },
   ];
