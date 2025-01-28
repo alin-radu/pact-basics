@@ -71,6 +71,7 @@ typings/
 .env*
 .env
 .env.dev
+.env.prod
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)

@@ -23,9 +23,9 @@ const branchName = 'release-1.0.1';
 let opts = {
   pactFilesOrDirs: [path.resolve(process.cwd(), '__tests__/contract/pacts')],
   pactBroker: process.env.PACK_BROKER_HOST,
-  consumerVersion: '1.0.1',
-  providerVerion: '1.0.1',
-  tags: 'tag-' + branchName,
+  consumerVersion: branchName,
+  providerVerion: branchName,
+  tags: 'release',
   branch: branchName,
 };
 

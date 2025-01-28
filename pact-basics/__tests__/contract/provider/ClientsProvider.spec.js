@@ -5,6 +5,20 @@ const { server, importData } = require('../../../src/provider/provider');
 const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
 require('dotenv').config({ path: envFile });
 
+// const branchName = (() => {
+//   try {
+//     const branchName = execSync('git rev-parse --abbrev-ref HEAD', {
+//       encoding: 'utf-8',
+//     }).trim();
+//     return branchName;
+//   } catch (error) {
+//     console.error('Error getting branch name:', error.message);
+//     return 'unknown-branch'; // Fallback branch name
+//   }
+// })();
+
+const branchName = 'release-1.0.1';
+
 const SERVER_PORT = process.env.PROVIDER_SERVER_PORT;
 const SERVER_URL = process.env.PROVIDER_SERVER_URL;
 
@@ -25,10 +39,10 @@ describe('Clients Service Verification', () => {
       logLevel: 'ERROR',
       providerBaseUrl: SERVER_URL,
       pactUrls: [process.env.PACK_BROKER_PACTS_URLS],
-      consumerVersionTags: ['dev'],
-      providerVersionTags: ['dev'],
+      consumerVersionTags: ['release'],
+      providerVersionTags: ['release'],
       publishVerificationResult: true,
-      providerVersion: '1.0.1',
+      providerVersion: branchName,
     };
 
     return new Verifier(opts).verifyProvider().then((output) => {
