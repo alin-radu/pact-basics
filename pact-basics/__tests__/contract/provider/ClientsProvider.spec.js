@@ -17,14 +17,16 @@ require('dotenv').config({ path: envFile });
 //   }
 // })();
 
-const branchName = 'release-1.0.1';
+const branchName = 'qa-1.0.1';
 
 const SERVER_PORT = process.env.PROVIDER_SERVER_PORT;
 const SERVER_URL = process.env.PROVIDER_SERVER_URL;
 
 // the provider server should be up
+
 // v1
 // npm run provider
+
 // v2
 server.listen(SERVER_PORT, () => {
   importData();
@@ -36,11 +38,11 @@ describe('Clients Service Verification', () => {
   it('validates the expectations of Client Service', () => {
     let opts = {
       provider: 'Clients Service',
-      logLevel: 'ERROR',
+      logLevel: 'INFO',
       providerBaseUrl: SERVER_URL,
       pactUrls: [process.env.PACK_BROKER_PACTS_URLS],
-      consumerVersionTags: ['release'],
-      providerVersionTags: ['release'],
+      consumerVersionTags: ['qa'],
+      providerVersionTags: ['qa'],
       publishVerificationResult: true,
       providerVersion: branchName,
     };

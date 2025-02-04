@@ -17,7 +17,7 @@ require('dotenv').config({ path: envFile });
 //   }
 // })();
 
-const branchName = 'release-1.0.1';
+const branchName = 'qa-1.0.1';
 
 // v1
 let opts = {
@@ -25,7 +25,7 @@ let opts = {
   pactBroker: process.env.PACK_BROKER_HOST,
   consumerVersion: branchName,
   providerVerion: branchName,
-  tags: 'release',
+  tags: 'qa',
   branch: branchName,
 };
 
