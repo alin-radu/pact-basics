@@ -19,7 +19,7 @@ require('dotenv').config({ path: envFile });
 
 const branchName = 'qa-1.0.1';
 
-// v1
+// v1, the consumerVersion and the providerVerion are dynamicaly generated from the branch name
 let opts = {
   pactFilesOrDirs: [path.resolve(process.cwd(), '__tests__/contract/pacts')],
   pactBroker: process.env.PACK_BROKER_HOST,
@@ -31,7 +31,7 @@ let opts = {
 
 publisher.publishPacts(opts);
 
-// v2
+// v2, the consumerVersion and the providerVerion are hardcoded
 // let opts = {
 //   pactFilesOrDirs: [path.resolve(process.cwd(), "__tests__/contract/pacts")],
 //   pactBroker: "https://localhost:9292",
