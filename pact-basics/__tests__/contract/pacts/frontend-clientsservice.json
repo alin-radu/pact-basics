@@ -21,13 +21,29 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "body": {
-          "firstName": "Lisa",
-          "lastName": "Simpson",
-          "dateOfBirth": "1/12/12",
-          "age": 20,
-          "id": 1
-        }
+        "body": [
+          {
+            "firstName": "Lisa",
+            "lastName": "Simpson",
+            "dateOfBirth": "01/01/2005",
+            "age": 20,
+            "id": 1
+          },
+          {
+            "firstName": "Wonder",
+            "lastName": "Woman",
+            "dateOfBirth": "01/01/1990",
+            "age": 35,
+            "id": 2
+          },
+          {
+            "firstName": "Homer",
+            "lastName": "Simpson",
+            "dateOfBirth": "01/01/1980",
+            "age": 45,
+            "id": 3
+          }
+        ]
       }
     },
     {
