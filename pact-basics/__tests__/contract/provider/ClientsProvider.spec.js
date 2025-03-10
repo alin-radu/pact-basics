@@ -9,6 +9,7 @@ const { tag, contractVersion } = contractTestInfo;
 
 const SERVER_PORT = process.env.PROVIDER_SERVER_PORT;
 const SERVER_URL = process.env.PROVIDER_SERVER_URL;
+const PACK_BROKER_URL = process.env.PACK_BROKER_URL;
 
 // start the server
 server.listen(SERVER_PORT, () => {
@@ -23,7 +24,7 @@ describe('Clients Service Verification', () => {
       provider: 'Clients Service',
       logLevel: 'ERROR',
       providerBaseUrl: SERVER_URL,
-      pactUrls: [process.env.PACK_BROKER_PACTS_URLS],
+      pactUrls: [PACK_BROKER_URL],
       consumerVersionTags: [tag],
       providerVersionTags: [tag],
       publishVerificationResult: true,
