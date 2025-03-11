@@ -1,6 +1,8 @@
 const path = require("path")
 const Pact = require("@pact-foundation/pact").Pact
 
+console.log('%c-> developmentConsole: pactSetup | EXECUTED','color:#77dcfd')
+
 global.port = 8081
 
 // Note: used by the consumer to create the contract/expectations;
@@ -14,3 +16,4 @@ global.provider = new Pact({
   logLevel: 'ERROR',
   pactfileWriteMode: "overwrite",
 })
+

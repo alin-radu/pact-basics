@@ -1,4 +1,4 @@
-require('../../config');
+require('../../config-env');
 
 let path = require('path');
 let publisher = require('@pact-foundation/pact-node');

@@ -96,7 +96,7 @@ describe('Clients Service', () => {
         },
         willRespondWith: {
           status: 200,
-          body: Matchers.like(postUserExpectedBody).contents,
+          body: postUserExpectedBody,
         },
       };
 

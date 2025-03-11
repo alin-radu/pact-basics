@@ -8,11 +8,11 @@ const branchName = (() => {
     return branchName;
   } catch (error) {
     console.error('---> Error getting branch name:', error.message);
-    return 'unknown-branch'; // Fallback branch name
+    return 'unknown-branch'; 
   }
 })();
 
-const version = '1.0.6';
+const version = '1.0.7';
 
 module.exports = {
   contractTestInfo: {

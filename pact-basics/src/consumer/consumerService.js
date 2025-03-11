@@ -1,4 +1,4 @@
-require('../../config');
+require('../../config-env');
 
 const { server } = require('./consumer');
 

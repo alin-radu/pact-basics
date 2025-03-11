@@ -1,5 +1,3 @@
-require('../../config');
-
 const axios = require('axios');
 const express = require('express');
 const server = express();
