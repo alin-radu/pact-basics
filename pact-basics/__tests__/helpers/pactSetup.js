@@ -1,7 +1,7 @@
 const path = require("path")
 const Pact = require("@pact-foundation/pact").Pact
 
-console.log('%c-> developmentConsole: pactSetup | EXECUTED','color:#77dcfd')
+console.log('%c-> developmentConsole: pactSetup | Frontend | EXECUTED','color:#77dcfd')
 
 global.port = 8081
 

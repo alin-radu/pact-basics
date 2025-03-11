@@ -11,26 +11,26 @@ const PACK_BROKER_URL = process.env.PACK_BROKER_URL;
 // start the server
 server.listen(SERVER_PORT, () => {
   importData();
-  console.log(`Pact | Clients Service listening on ${SERVER_URL}...`);
+  console.log(`Pact | Provider | Clients Service listening on ${SERVER_URL} ...`);
 });
 
 // run tests
 describe('Clients Service Verification', () => {
   it('validates the expectations of Client Service', () => {
-    let opts = {
+    let options = {
       provider: 'Clients Service',
-      logLevel: 'ERROR',
       providerBaseUrl: SERVER_URL,
       pactUrls: [PACK_BROKER_URL],
       consumerVersionTags: [tag],
       providerVersionTags: [tag],
-      publishVerificationResult: true,
       providerVersion: contractVersion,
+      publishVerificationResult: true,
+      logLevel: 'ERROR',
     };
 
-    return new Verifier(opts).verifyProvider().then((output) => {
-      console.log('---> Pact Verification Complete!');
-      console.log('---> output: ', output);
+    return new Verifier(options).verifyProvider().then((output) => {
+      console.log('---> Pact | Provider | Verification Complete!');
+      console.log('---> Pact | Provider | output: ', output);
     });
   });
 });

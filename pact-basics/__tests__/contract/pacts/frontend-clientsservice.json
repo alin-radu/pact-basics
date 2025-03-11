@@ -58,7 +58,8 @@
         "body": {
           "firstName": "Rafaela_REQUEST",
           "lastName": "Azevedo_REQUEST",
-          "age": 29
+          "dateOfBirth": "01/01/1980",
+          "age": 35
         }
       },
       "response": {
@@ -66,23 +67,15 @@
         "headers": {
         },
         "body": {
-          "firstName": "Rafaela_RESPONSE",
-          "lastName": "Azevedo_RESPONSE",
-          "age": 29,
+          "firstName": "Rafaela_REQUEST",
+          "lastName": "Azevedo_REQUEST",
+          "dateOfBirth": "02/11/2013",
           "id": 4
         },
         "matchingRules": {
-          "$.body.firstName": {
-            "match": "type"
-          },
-          "$.body.lastName": {
-            "match": "type"
-          },
-          "$.body.age": {
-            "match": "type"
-          },
-          "$.body.id": {
-            "match": "type"
+          "$.body.dateOfBirth": {
+            "match": "regex",
+            "regex": "\\d{2}\\/\\d{2}\\/\\d{4}"
           }
         }
       }
