@@ -34,3 +34,39 @@ describe('Clients Service Verification', () => {
     });
   });
 });
+
+// interface CurrentVerifierOptions {
+//     providerBaseUrl: string;
+//     provider?: string;
+//     pactUrls?: string[];
+//     pactBrokerUrl?: string;
+//     pactBrokerUsername?: string;
+//     pactBrokerPassword?: string;
+//     pactBrokerToken?: string;
+//     consumerVersionTags?: string | string[];
+//     providerVersionTags?: string | string[];
+//     providerVersionBranch?: string;
+//     consumerVersionSelectors?: ConsumerVersionSelector[];
+//     customProviderHeaders?: string[];
+//     publishVerificationResult?: boolean;
+//     providerVersion?: string;
+//     enablePending?: boolean;
+//     timeout?: number;
+//     verbose?: boolean;
+//     includeWipPactsSince?: string;
+//     monkeypatch?: string;
+//     format?: 'json' | 'xml' | 'progress' | 'RspecJunitFormatter';
+//     out?: string;
+//     logDir?: string;
+//     logLevel?: LogLevel;
+// }
+
+// interface ProxyOptions {
+//     logLevel?: LogLevel;
+//     requestFilter?: express.RequestHandler;
+//     stateHandlers?: StateHandler;
+//     beforeEach?: Hook;
+//     afterEach?: Hook;
+//     validateSSL?: boolean;
+//     changeOrigin?: boolean;
+// }

@@ -17,3 +17,20 @@ global.provider = new Pact({
   pactfileWriteMode: "overwrite",
 })
 
+// export declare type LogLevel = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
+// export interface PactOptions {
+//     consumer: string;
+//     provider: string;
+//     port?: number;
+//     host?: string;
+//     ssl?: boolean;
+//     sslcert?: string;
+//     sslkey?: string;
+//     dir?: string;
+//     log?: string;
+//     logLevel?: LogLevel;
+//     spec?: number;
+//     cors?: boolean;
+//     timeout?: number;
+//     pactfileWriteMode?: PactfileWriteMode;
+// }

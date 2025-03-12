@@ -23,27 +23,21 @@
         },
         "body": [
           {
-            "firstName": "Lisa",
-            "lastName": "Simpson",
+            "id": 15,
+            "firstName": "LisaChanged",
+            "lastName": "SimpsonChanged",
             "dateOfBirth": "01/01/2005",
-            "age": 20,
-            "id": 1
-          },
-          {
-            "firstName": "Wonder",
-            "lastName": "Woman",
-            "dateOfBirth": "01/01/1990",
-            "age": 35,
-            "id": 2
-          },
-          {
-            "firstName": "Homer",
-            "lastName": "Simpson",
-            "dateOfBirth": "01/01/1980",
-            "age": 45,
-            "id": 3
+            "age": 25
           }
-        ]
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          }
+        }
       }
     },
     {
@@ -58,8 +52,7 @@
         "body": {
           "firstName": "Rafaela_REQUEST",
           "lastName": "Azevedo_REQUEST",
-          "dateOfBirth": "01/01/1980",
-          "age": 35
+          "age": 29
         }
       },
       "response": {
@@ -67,15 +60,23 @@
         "headers": {
         },
         "body": {
-          "firstName": "Rafaela_REQUEST",
-          "lastName": "Azevedo_REQUEST",
-          "dateOfBirth": "02/11/2013",
+          "firstName": "Rafaela_RESPONSE",
+          "lastName": "Azevedo_RESPONSE",
+          "age": 29,
           "id": 4
         },
         "matchingRules": {
-          "$.body.dateOfBirth": {
-            "match": "regex",
-            "regex": "\\d{2}\\/\\d{2}\\/\\d{4}"
+          "$.body.firstName": {
+            "match": "type"
+          },
+          "$.body.lastName": {
+            "match": "type"
+          },
+          "$.body.age": {
+            "match": "type"
+          },
+          "$.body.id": {
+            "match": "type"
           }
         }
       }

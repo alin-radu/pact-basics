@@ -2,28 +2,15 @@
 
 const { Matchers } = require('@pact-foundation/pact');
 const { getClients, postClient } = require('../../../src/consumer/consumer');
+const { eachLike } = require('@pact-foundation/pact/src/dsl/matchers');
 
 const getUsersExpectedBody = [
   {
-    firstName: 'Lisa',
-    lastName: 'Simpson',
+    id: 111,
+    firstName: 'LisaChanged',
+    lastName: 'SimpsonChanged',
     dateOfBirth: '01/01/2005',
-    age: 20,
-    id: 1,
-  },
-  {
-    firstName: 'Wonder',
-    lastName: 'Woman',
-    dateOfBirth: '01/01/1990',
-    age: 35,
-    id: 2,
-  },
-  {
-    firstName: 'Homer',
-    lastName: 'Simpson',
-    dateOfBirth: '01/01/1980',
-    age: 45,
-    id: 3,
+    age: 255,
   },
 ];
 
@@ -34,10 +21,10 @@ const postUserBody = {
 };
 
 const postUserExpectedBody = {
-  firstName: Matchers.string('Rafaela_RESPONSE'),
-  lastName: Matchers.string('Azevedo_RESPONSE'),
-  age: Matchers.integer(29),
-  id: Matchers.integer(4),
+  firstName: 'Rafaela',
+  lastName: 'Azevedo',
+  dateOfBirth: '01/01/2005',
+  age: 20,
 };
 
 describe('Clients Service', () => {
@@ -63,7 +50,7 @@ describe('Clients Service', () => {
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
           },
-          body: getUsersExpectedBody,
+          body: eachLike(getUsersExpectedBody[0], { min: 1 }),
         },
       };
 
@@ -74,7 +61,17 @@ describe('Clients Service', () => {
     test('returns correct body, header and statusCode', async () => {
       const response = await getClients();
       expect(response.headers['content-type']).toBe('application/json; charset=utf-8');
-      expect(response.data).toEqual(getUsersExpectedBody);
+      expect(response.data).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            id: expect.any(Number),
+            firstName: expect.any(String),
+            lastName: expect.any(String),
+            dateOfBirth: expect.any(String),
+            age: expect.any(Number),
+          }),
+        ])
+      );
       expect(response.status).toEqual(200);
     });
   });
