@@ -2,7 +2,7 @@
 
 const { Matchers } = require('@pact-foundation/pact');
 const { getClients, postClient } = require('../../../src/consumer/consumer');
-const { eachLike } = require('@pact-foundation/pact/src/dsl/matchers');
+const { eachLike, like } = require('@pact-foundation/pact/src/dsl/matchers');
 
 const getUsersExpectedBody = [
   {
@@ -17,10 +17,12 @@ const getUsersExpectedBody = [
 const postUserBody = {
   firstName: 'Rafaela_REQUEST',
   lastName: 'Azevedo_REQUEST',
+  dateOfBirth: '01/01/2005',
   age: 29,
 };
 
 const postUserExpectedBody = {
+  id: 14,
   firstName: 'Rafaela',
   lastName: 'Azevedo',
   dateOfBirth: '01/01/2005',
@@ -93,7 +95,7 @@ describe('Clients Service', () => {
         },
         willRespondWith: {
           status: 200,
-          body: postUserExpectedBody,
+          body: like(postUserExpectedBody),
         },
       };
 
@@ -103,8 +105,8 @@ describe('Clients Service', () => {
     // the test
     test('returns correct body, header and statusCode', async () => {
       const response = await postClient(postUserBody);
-      expect(response.data.id).toEqual(4);
       expect(response.status).toEqual(200);
+      expect(response.data.id).toEqual(expect.any(Number));
     });
   });
 });

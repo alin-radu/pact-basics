@@ -6,9 +6,9 @@
   "scripts": {
     "consumer": "node src/consumerService.js",
     "provider": "node src/providerService.js",
-    "pactTest:consumer": "NODE_ENV=development jest --config ./jest.config.pact-consumer.js --runInBand",
-    "pactTest:provider": "NODE_ENV=development jest --config ./jest.config.pact-provider.js --runInBand --force-exit",
-    "pactPublish:contract": "NODE_ENV=development node ./__tests__/helpers/publish.js"
+    "contractTest:consumer": "NODE_ENV=development jest --config ./jest.config.pact-consumer.js --runInBand",
+    "contractTest:provider": "NODE_ENV=development jest --config ./jest.config.pact-provider.js --runInBand --force-exit",
+    "contractTest:publish": "NODE_ENV=development node ./__tests__/helpers/publish.js"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.7.0",

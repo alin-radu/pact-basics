@@ -12,7 +12,7 @@ const branchName = (() => {
   }
 })();
 
-const version = '1.0.11';
+const version = '1.0.3';
 
 module.exports = {
   contractTestInfo: {

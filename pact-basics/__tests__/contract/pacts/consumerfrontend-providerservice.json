@@ -1,9 +1,9 @@
 {
   "consumer": {
-    "name": "Frontend"
+    "name": "ConsumerFrontend"
   },
   "provider": {
-    "name": "ClientsService"
+    "name": "ProviderService"
   },
   "interactions": [
     {
@@ -23,11 +23,11 @@
         },
         "body": [
           {
-            "id": 15,
+            "id": 111,
             "firstName": "LisaChanged",
             "lastName": "SimpsonChanged",
             "dateOfBirth": "01/01/2005",
-            "age": 25
+            "age": 255
           }
         ],
         "matchingRules": {
@@ -52,6 +52,7 @@
         "body": {
           "firstName": "Rafaela_REQUEST",
           "lastName": "Azevedo_REQUEST",
+          "dateOfBirth": "01/01/2005",
           "age": 29
         }
       },
@@ -60,22 +61,14 @@
         "headers": {
         },
         "body": {
-          "firstName": "Rafaela_RESPONSE",
-          "lastName": "Azevedo_RESPONSE",
-          "age": 29,
-          "id": 4
+          "id": 14,
+          "firstName": "Rafaela",
+          "lastName": "Azevedo",
+          "dateOfBirth": "01/01/2005",
+          "age": 20
         },
         "matchingRules": {
-          "$.body.firstName": {
-            "match": "type"
-          },
-          "$.body.lastName": {
-            "match": "type"
-          },
-          "$.body.age": {
-            "match": "type"
-          },
-          "$.body.id": {
+          "$.body": {
             "match": "type"
           }
         }

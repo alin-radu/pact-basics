@@ -7,8 +7,8 @@ global.port = 8081
 
 // Note: used by the consumer to create the contract/expectations;
 global.provider = new Pact({
-  consumer: "Frontend",
-  provider: "ClientsService",
+  consumer: "ConsumerFrontend",
+  provider: "ProviderService",
   port: global.port,
   log: path.resolve(process.cwd(), "__tests__/contract/logs", "mockserver-integration.log"),
   dir: path.resolve(process.cwd(), "__tests__/contract/pacts"),

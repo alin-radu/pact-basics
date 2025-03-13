@@ -31,9 +31,6 @@ const importData = () => {
 
 // get all clients
 server.get('/clients', (req, res) => {
-  
-  console.log('%c-> developmentConsole: ClientsService | getClients===> ', 'color:#77dcfd');
-  
   res.json(clientRepository.fetchAll());
 });
 
@@ -52,7 +49,6 @@ server.get('/clients/:id', (req, res) => {
 // add a new client
 server.post('/clients', (req, res) => {
   const client = req.body;
-  console.log('%c-> developmentConsole: client= ','color:#77dcfd', client)
 
   if (!client || !client.firstName) {
     res.status(400);

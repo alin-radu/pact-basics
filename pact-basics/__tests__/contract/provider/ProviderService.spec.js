@@ -18,7 +18,7 @@ server.listen(SERVER_PORT, () => {
 describe('Clients Service Verification', () => {
   it('validates the expectations of Client Service', () => {
     let options = {
-      provider: 'Clients Service',
+      provider: 'ProviderService',
       providerBaseUrl: SERVER_URL,
       pactUrls: [PACK_BROKER_URL],
       consumerVersionTags: [tag],
