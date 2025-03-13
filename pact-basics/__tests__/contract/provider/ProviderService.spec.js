@@ -3,13 +3,13 @@ const { Verifier } = require('@pact-foundation/pact');
 const { server, importData } = require('../../../src/provider/provider');
 const { contractTestInfo } = require('../../helpers/contractTestHelpers');
 
-const { tag, contractVersion } = contractTestInfo;
+const { consumerTag, providerTag, providerVersion } = contractTestInfo;
 const SERVER_PORT = process.env.PROVIDER_SERVER_PORT;
 const SERVER_URL = process.env.PROVIDER_SERVER_URL;
 const PACK_BROKER_URL = process.env.PACK_BROKER_URL;
 
 // start the server
-server.listen(SERVER_PORT, () => {
+const app = server.listen(SERVER_PORT, () => {
   importData();
   console.log(`Pact | Provider | Clients Service listening on ${SERVER_URL} ...`);
 });
@@ -18,20 +18,28 @@ server.listen(SERVER_PORT, () => {
 describe('Clients Service Verification', () => {
   it('validates the expectations of Client Service', () => {
     let options = {
+      logLevel: 'debug',
+      pactUrls: [PACK_BROKER_URL],
       provider: 'ProviderService',
       providerBaseUrl: SERVER_URL,
-      pactUrls: [PACK_BROKER_URL],
-      consumerVersionTags: [tag],
-      providerVersionTags: [tag],
-      providerVersion: contractVersion,
-      publishVerificationResult: true,
-      logLevel: 'ERROR',
+      providerVersion: providerVersion,
+      providerVersionTags: [providerTag],
+      consumerVersionTags: [consumerTag],
     };
 
-    return new Verifier(options).verifyProvider().then((output) => {
-      console.log('---> Pact | Provider | Verification Complete!');
-      console.log('---> Pact | Provider | output: ', output);
-    });
+    if (process.env.PACK_BROKER_URL || process.env.PACT_PUBLISH_RESULTS) {
+      options.publishVerificationResult = true;
+    }
+
+    return new Verifier(options)
+      .verifyProvider()
+      .then((output) => {
+        console.log('---> Pact | Provider | Verification Complete!');
+        console.log('---> Pact | Provider | output: ', output);
+      })
+      .finally(() => {
+        app.close();
+      });
   });
 });
 
@@ -70,3 +78,5 @@ describe('Clients Service Verification', () => {
 //     validateSSL?: boolean;
 //     changeOrigin?: boolean;
 // }
+
+// export declare type LogLevel = debug, info, warn, error, fatal;

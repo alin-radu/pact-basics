@@ -12,13 +12,17 @@ const branchName = (() => {
   }
 })();
 
-const version = '1.0.3';
+const consumerVersion = '1.0.5';
+const consumerTag = branchName;
+const providerVersion = '1.0.5';
+const providerTag = branchName;
 
 module.exports = {
   contractTestInfo: {
-    branchName: branchName,
-    tag: branchName,
-    version,
-    contractVersion: `${branchName}-${version}`,
+    branchName,
+    consumerVersion: `${branchName}-${consumerVersion}`,
+    consumerTag,
+    providerVersion:`${branchName}-${providerVersion}`,
+    providerTag,
   },
 };
